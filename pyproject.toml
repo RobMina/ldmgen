@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ldmgen"
+version = "0.1.0"
+description = "Generator-neutral LDM event record (ldmgen/1 HDF5), HepMC3/LdmHepMC public layer, adapters, HEPEVT sinks"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Rob Mina", email = "ram2aq@virginia.edu" }]
+dependencies = ["numpy", "h5py"]
+
+[project.urls]
+Homepage = "https://github.com/RobMina/ldmgen"
+Repository = "https://github.com/RobMina/ldmgen"
+
+[project.optional-dependencies]
+# exporters call the chains' own writers; install where exports run
+chains = [
+  "bdnmc-nova @ git+https://github.com/RobMina/bdnmc-nova.git",
+  "bdnmc-dune @ git+https://github.com/RobMina/bdnmc-dune.git",
+]
+plot = ["matplotlib"]
+test = ["pytest", "matplotlib"]
+
+[project.scripts]
+ldmgen = "ldmgen.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ldmgen*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["chain: needs bdnmc_jax and the chain packages (bdnmc_nova, bdnmc_dune)"]

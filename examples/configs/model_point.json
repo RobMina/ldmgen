@@ -1,0 +1,8 @@
+{
+  "name": "vector_portal",
+  "epsilon": 0.001,
+  "alpha_D": 0.1,
+  "m_chi": 0.005,
+  "m_V": 0.1,
+  "dm_spin": "scalar"
+}
