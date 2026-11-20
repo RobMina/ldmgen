@@ -2,7 +2,7 @@
 workspace's test application `dbcompare` (generators/g4darkbrem/, README "Output format", format `dbcompare/1`).
 
 Status: implemented against the documented format (2026-11-16); to be validated on the first matrix runs
-(`runs/<user>/g4darkbrem-matrix-<engine>-m<mass>/out/<run>/`).
+(`runs/<user>/g4darkbrem-matrix-<engine>-m<mass>/out/<run>/` under the site workdir).
 
 Input: one run directory with `summary.json` and `emissions.csv.gz`, one row per A' emission:
 - the radiating lepton (`parent_pdg` 11 / -11 / 13 / -13, `parent_track`, `parent_primary`) and its four-momentum at
