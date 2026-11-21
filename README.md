@@ -7,7 +7,7 @@ BdNMC, MadDump, PETITE, G4DarkBreM / DMG4 (and similar tools).
 |---|---|
 | Analysis / adapters / compare | **`ldmgen/1` HDF5** |
 | Public interchange | **HepMC3 + thin LdmHepMC** attribute profile |
-| Experiment entry | **Sinks only**: HEPEVT / TextFileGen / edep-sim / (later) Mu2e GenParticle |
+| Experiment entry | **Sinks only**: HEPEVT / edep-sim / (later) Mu2e GenParticle |
 
 Rejected as the shared LDM record: EDM4hep / PODIO / LCIO / LHEH5.
 

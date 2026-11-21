@@ -16,7 +16,7 @@ import numpy as np
 from .frames import rotate, to_detector
 
 ELECTRON = 11
-CHI_PDG_HEPEVT = 18  # NOvA TextFileGen convention for recoil DM (status 2)
+CHI_PDG_HEPEVT = 18  # NOvA HEPEVT convention for recoil DM (status 2)
 
 
 def write(rec, path, *, frame=None, max_events: int = -1, chi_pdg: int = CHI_PDG_HEPEVT) -> dict:
@@ -48,7 +48,7 @@ def write(rec, path, *, frame=None, max_events: int = -1, chi_pdg: int = CHI_PDG
     for ev in events:
         m = sc["event"] == ev
         idxs = np.flatnonzero(m)
-        # one HEPEVT event per scatter row (edep-sim / TextFileGen style)
+        # one HEPEVT event per scatter row (edep-sim / NOvA HEPEVT style)
         for i in idxs:
             vtx = to_detector(sc["vertex"][i : i + 1], frame)[0]
             out_p = rotate(sc["out_p4"][i : i + 1], frame)[0]

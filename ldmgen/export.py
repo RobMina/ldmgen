@@ -1,7 +1,7 @@
 """Exporters to the detector chains. They do not write any detector format themselves: they hand the record to the
 writers the chains already use, through a view shaped like a `bdnmc_jax` result.
 
-- NOvA ND (TextFileGen `events.txt`): `bdnmc_nova.textfilegen.write` (recoil electron tracked, recoil DM as PDG 18,
+- NOvA ND (HEPEVT `events.txt`): `bdnmc_nova.hepevt.write` (recoil electron tracked, recoil DM as PDG 18,
   status 2, links `0 -1 -1 -1`; detector frame from bdnmc-nova's private configuration);
 - DUNE ND-LAr (edep-sim HEPEVT, marley flavour): `bdnmc_dune.hepevt.write` (one interaction point per event, with
   `<file>.index.csv` back to the record's events; frame from the card's cuboid).
@@ -71,18 +71,19 @@ def _is_bdnmc_cuboid(rec):
 
 
 def to_nova(rec, out, config_path=None, max_events=-1):
-    """Write NOvA TextFileGen input. `config_path`: bdnmc-nova's frame configuration (private; or
+    """Write the NOvA ND HEPEVT input. `config_path`: bdnmc-nova's frame configuration (private; or
     $BDNMC_NOVA_CONFIG). The record's vertices are already in the beam frame (production offsets applied by the
     adapter), so the frame's per-channel production z is not applied again. Returns a summary dict."""
-    from bdnmc_nova import config, textfilegen
+    from bdnmc_nova import config
+    from bdnmc_nova import hepevt as nova_hepevt
     frame, _ = config.load(config_path)
     rec = _head(rec, max_events)
     with tempfile.TemporaryDirectory() as tmp:
         card = rec.run.card if _is_bdnmc_cuboid(rec) else minimal_card(rec)
         res = as_bdnmc_result(rec, _card_file(tmp, card))
-        n = textfilegen.write(res, out, frame, None)
-    return {"chain": "nova-textfilegen", "path": str(out), "events": int(n), "scatters": rec.n_scatter,
-            "writer": "bdnmc_nova.textfilegen.write"}
+        n = nova_hepevt.write(res, out, frame, None)
+    return {"chain": "nova-hepevt", "path": str(out), "events": int(n), "scatters": rec.n_scatter,
+            "writer": "bdnmc_nova.hepevt.write"}
 
 
 def to_dune(rec, out, overrides=(), gdml_offset=None, frame_from="auto", off_axis_x=0.0, max_events=-1):

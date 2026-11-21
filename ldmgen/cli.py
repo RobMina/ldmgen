@@ -234,7 +234,7 @@ def main(argv=None):
     hv.add_argument("record")
     hv.add_argument("--out", required=True)
     hv.add_argument("--max-events", type=int, default=-1)
-    hv.add_argument("--chi-pdg", type=int, default=18, help="PDG code for recoil DM (TextFileGen uses 18)")
+    hv.add_argument("--chi-pdg", type=int, default=18, help="PDG code for recoil DM (the NOvA HEPEVT convention is 18)")
     hv.set_defaults(fn=cmd_to_hepevt)
     q = sub.add_parser("select", help="keep the DM rows (and their scatters) whose columns match")
     q.add_argument("record")
