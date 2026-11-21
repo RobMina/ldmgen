@@ -57,6 +57,11 @@ examples/         public-safe configs
 
 Schema and adapter details: [`ldmgen/README.md`](ldmgen/README.md).
 
+## Citing
+
+Please cite the release you used: `CITATION.cff` holds the metadata (GitHub's "Cite this repository" renders it), and
+each tagged release is archived on Zenodo with its own DOI.
+
 ## Licence
 
 Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).

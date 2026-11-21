@@ -13,8 +13,7 @@ and HEPEVT sinks. Optional exporters call the separate public packages:
 
 NOvA-internal geometry, surveyed ND placement, private frame JSON, FCL, and
 site paths are not part of this repository. They stay in collaboration-private
-areas and in the separate private generator workspace (ldm-generators) / UVA
-project space when those exist.
+areas and in a separate private generator workspace.
 
 Related packages (not merged here):
 - nova-fastsim (https://github.com/RobMina/nova-fastsim) — NOvA ND fastsim shell; consumes ldmgen

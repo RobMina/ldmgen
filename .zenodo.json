@@ -1,0 +1,30 @@
+{
+  "title": "ldmgen: a generator-neutral event record for light-dark-matter simulation",
+  "upload_type": "software",
+  "version": "0.1.1",
+  "description": "ldmgen defines a generator-neutral event record for light-dark-matter production and scattering (ldmgen/1, HDF5), with adapters for BdNMC and similar generators, comparison tools, a public interchange layer on HepMC3 with a thin LdmHepMC attribute profile, and HEPEVT sinks for experiment simulations.",
+  "creators": [
+    {
+      "name": "Mina, Rob",
+      "affiliation": "University of Virginia",
+      "orcid": "0000-0003-2241-8566"
+    }
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "light dark matter",
+    "event generator",
+    "HepMC3",
+    "HDF5",
+    "beam dump",
+    "particle physics"
+  ],
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/RobMina/ldmgen/tree/v0.1.1",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
