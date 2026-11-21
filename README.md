@@ -1,5 +1,7 @@
 # ldmgen
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24418808.svg)](https://doi.org/10.5281/zenodo.24418808)
+
 Generator-neutral **light dark matter** event record and interchange layer for
 BdNMC, MadDump, PETITE, G4DarkBreM / DMG4 (and similar tools).
 
@@ -60,7 +62,8 @@ Schema and adapter details: [`ldmgen/README.md`](ldmgen/README.md).
 ## Citing
 
 Please cite the release you used: `CITATION.cff` holds the metadata (GitHub's "Cite this repository" renders it), and
-each tagged release is archived on Zenodo with its own DOI.
+each tagged release is archived on Zenodo with its own DOI. The concept DOI
+[10.5281/zenodo.24418808](https://doi.org/10.5281/zenodo.24418808) covers every version and resolves to the latest one.
 
 ## Licence
 
