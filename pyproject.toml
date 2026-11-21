@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ldmgen"
-version = "0.1.0"
+version = "0.1.1"
 description = "Generator-neutral LDM event record (ldmgen/1 HDF5), HepMC3/LdmHepMC public layer, adapters, HEPEVT sinks"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,7 +19,8 @@ Repository = "https://github.com/RobMina/ldmgen"
 [project.optional-dependencies]
 # exporters call the chains' own writers; install where exports run
 chains = [
-  "bdnmc-nova @ git+https://github.com/RobMina/bdnmc-nova.git",
+  # first bdnmc-nova commit with the bdnmc_nova.hepevt writer module
+  "bdnmc-nova @ git+https://github.com/RobMina/bdnmc-nova.git@0f872b84c2825467895bd0c37822ca4b61adb960",
   "bdnmc-dune @ git+https://github.com/RobMina/bdnmc-dune.git",
 ]
 plot = ["matplotlib"]

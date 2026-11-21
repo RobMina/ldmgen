@@ -2,13 +2,13 @@
 
 One event record for every light-dark-matter generator (BdNMC stock and JAX port, MadDump, PETITE, G4DarkBreM,
 DMG4). With it you can compare the generators at one model point and feed any of them into detector chains the same
-way. Agreed layers: **`ldmgen/1` HDF5** (analysis), **HepMC3 + LdmHepMC** (public interchange), **HEPEVT / TextFileGen /
+way. Agreed layers: **`ldmgen/1` HDF5** (analysis), **HepMC3 + LdmHepMC** (public interchange), **HEPEVT /
 edep-sim** (sinks only).
 
 ```
 generator output --adapter--> ldmgen record (HDF5, ldmgen/1) --to-hepmc3--> events.hepmc3 (+ LdmHepMC)
                                     │           │                --to-hepevt--> events.hepevt
-                                    │           │                --export--> NOvA TextFileGen / DUNE edep-sim (optional)
+                                    │           │                --export--> NOvA HEPEVT / DUNE edep-sim (optional)
                                     │           └--compare--> yields per POT, distributions, overlays
                                     └--scatter--> (production-only: chi rows -> chi e- scatters) --export
 ```
@@ -152,7 +152,7 @@ chi rows (/dm: p4, production vertex, weight; any dm_sample but "scattered")
 
 ldmgen writes no detector format itself. It hands the record to the writers the chains already use, through a view
 shaped like a `bdnmc_jax` result:
-- **NOvA:** `bdnmc_nova.textfilegen.write`;
+- **NOvA:** `bdnmc_nova.hepevt.write`;
 - **DUNE:** `bdnmc_dune.hepevt.write`, one interaction point per event, with `events.hepevt.index.csv`.
 
 Both call `bdnmc_jax.output.write_hepevt`. For BdNMC records the output is byte-identical to the chains' own path

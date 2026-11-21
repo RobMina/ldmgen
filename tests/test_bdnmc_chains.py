@@ -1,6 +1,6 @@
 """BdNMC through ldmgen to both chains, against the chains' own path, on a laptop CPU (a few 2^16-trial blocks).
 
-The existing path: `bdnmc_nova.textfilegen.write` / `bdnmc_dune.hepevt.write` on the JAX result. The ldmgen path:
+The existing path: `bdnmc_nova.hepevt.write` / `bdnmc_dune.hepevt.write` on the JAX result. The ldmgen path:
 result -> record (in memory, and through the port's HDF5 and the stock text format) -> saved -> loaded -> export.
 The JAX-result and HDF5 routes must give byte-identical files; the stock text route (10 significant digits) must
 agree to the text precision."""
@@ -14,7 +14,7 @@ pytest.importorskip("bdnmc_jax")
 bdnmc_nova = pytest.importorskip("bdnmc_nova")
 bdnmc_dune = pytest.importorskip("bdnmc_dune")
 
-import bdnmc_nova.config, bdnmc_nova.textfilegen  # noqa: E402,F401
+import bdnmc_nova.config, bdnmc_nova.hepevt  # noqa: E402,F401
 from ldmgen import EventRecord, export  # noqa: E402
 from ldmgen.adapters import bdnmc  # noqa: E402
 
@@ -58,7 +58,7 @@ def nova_run(tmp_path_factory):
     cfg.write_text(json.dumps({"frame": {"origin_m": [0.3, -1.9, 491.0], "pitch_rad": 0.0145766,
                                          "yaw_rad": -0.0577, "production_z_m": {}}}))
     frame, _ = bdnmc_nova.config.load(cfg)
-    bdnmc_nova.textfilegen.write(res, d / "direct.txt", frame, None)
+    bdnmc_nova.hepevt.write(res, d / "direct.txt", frame, None)
     output.write_hdf5(res, d / "jax.h5")
     output.write_text(res, d / "events.dat")
     return d, res, cfg
@@ -248,7 +248,7 @@ def test_scatter_unweighted_and_sample_match_bdnmc(bdnmc_hits):
 
 def test_scatter_ignores_misses_and_exports(bdnmc_hits, tmp_path, nova_run):
     """Rows that miss the detector change nothing; a fermion sample is flagged; the scattered record goes through
-    both exporters (TextFileGen and edep-sim HEPEVT) unchanged."""
+    both exporters (NOvA and edep-sim HEPEVT) unchanged."""
     import copy
     from ldmgen import scatter
     from ldmgen.record import EventRecord

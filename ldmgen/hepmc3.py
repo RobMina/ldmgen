@@ -2,7 +2,7 @@
 
 Public interchange layer (agreed 2026-11-20): generators and analysis keep `ldmgen/1` HDF5;
 HepMC3 + LdmHepMC is the shareable particle-level graph. Experiment entry points (HEPEVT /
-TextFileGen / edep-sim / Mu2e GenParticle) remain sinks — see `ldmgen.hepevt` and `ldmgen.export`.
+edep-sim / Mu2e GenParticle) remain sinks — see `ldmgen.hepevt` and `ldmgen.export`.
 
 This writer is pure Python (no pyhepmc / HepMC3 C++). It emits HepMC3 Asciiv3 text that a
 HepMC3-aware reader can parse. LdmHepMC attributes mirror NuHepMC-style run/event metadata.

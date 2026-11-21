@@ -7,7 +7,7 @@ This package provides a generator-neutral light-dark-matter event record
 (ldmgen/1 HDF5), adapters, comparison tools, a HepMC3/LdmHepMC public layer,
 and HEPEVT sinks. Optional exporters call the separate public packages:
 
-- bdnmc-nova (https://github.com/RobMina/bdnmc-nova) — NOvA TextFileGen writers
+- bdnmc-nova (https://github.com/RobMina/bdnmc-nova) — NOvA HEPEVT writers
 - bdnmc-dune (https://github.com/RobMina/bdnmc-dune) — DUNE edep-sim HEPEVT writers
 - BdNMC / bdnmc-jax (https://github.com/RobMina/BdNMC) — reference generator and scatter physics
 
