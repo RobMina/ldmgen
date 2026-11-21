@@ -4,6 +4,7 @@ type: software
 title: "ldmgen: a generator-neutral event record for light-dark-matter simulation"
 version: "0.1.1"
 date-released: "2026-11-20"
+doi: "10.5281/zenodo.24418808"
 authors:
   - family-names: Mina
     given-names: Rob
